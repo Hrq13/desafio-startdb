@@ -15,7 +15,7 @@ Array.prototype.customFind = function (predicate) {
     for (i = 0; i < this.length; i++) {
         if (predicate(this[i])) return this[i];
     }
-    return null;
+    return undefined;
 }
 
 
@@ -49,11 +49,10 @@ Array.prototype.customMap = function (callback) {
 }
 
 Array.prototype.customReduce = function (callback, initialValue) {
-    let total; 
+    let total = undefined; 
 
     if (typeof initialValue === 'undefined') {
-        total = callback('', this[0]);
-        console.log(typeof initialValue);
+        total = callback(null, this[0]);
     } else {
         total = callback(initialValue, this[0])
     }
